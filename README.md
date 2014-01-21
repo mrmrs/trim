@@ -1,6 +1,6 @@
 # TRIM
 
-Work in progress. Under active decelopment. Pull requests welcome.
+Work in progress. Under active development. Pull requests welcome.
 
 ## Wut
 
