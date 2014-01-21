@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     watch = require('gulp-watch'),
     lr    = require('tiny-lr'),
-    server = lr();
+    server = lr(),
     livereload = require('gulp-livereload'),
     prefix = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
@@ -50,11 +50,15 @@ gulp.task('pre-process', function(){
             return files.pipe(sass({includePaths: ['sass/']}))
               .pipe(prefix())
               .pipe(gulp.dest('css/'))
-              .pipe(livereload(server));
+              .pipe(livereload(server))
           }));
 });
 
-
+ gulp.task('images', function() {
+  return gulp.src('src/images/**/*')
+    .pipe((imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+    .pipe(gulp.dest('./img'))
+});
 
 // DEFAULT TASK
 // Process sass and lints outputted css
