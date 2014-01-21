@@ -1,9 +1,13 @@
-# Wut
+# TRIM
+
+Work in progress. Under active decelopment. Pull requests welcome.
+
+## Wut
 
 Running a simple dev environment and readying assets for production should
 be super easy and trivial. This is an attempt at a basic template for
 faster performing websites. Performance matters, but we shouldn't have
-to constantly pick low-hanging fruit.
+to constantly pick low-hanging fruit. It should be push-button. This is that button.
 
 # Getting started
 
