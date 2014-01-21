@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
     csslint = require('gulp-csslint'),
-    sass = require('gulp-sass');
 
 
 gulp.task('default', function(){
