@@ -27,6 +27,12 @@ gulp.task('minify-js', function() {
     .pipe(gulp.dest('./js/'));
 });
 
+gulp.task('minify-img', function() {
+  return gulp.src('./img/**/*')
+    .pipe((imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+    .pipe(gulp.dest('./img'));
+});
+
 // Task to csslint css and jshint js
 gulp.task('lint', function(){
   // Use jshint for js - currently not working it seems
@@ -54,12 +60,6 @@ gulp.task('pre-process', function(){
           }));
 });
 
- gulp.task('images', function() {
-  return gulp.src('src/images/**/*')
-    .pipe((imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('./img'))
-});
-
 // DEFAULT TASK
 // Process sass and lints outputted css
 gulp.task('default', function(){
@@ -74,7 +74,6 @@ gulp.task('default', function(){
 
 
 gulp.task('production', function(){
-    gulp.run('minify-css');
-    gulp.run('minify-js');
+    gulp.run('minify-css', 'minify-js', 'minify-img');
 });
 
