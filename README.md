@@ -7,15 +7,14 @@ to constantly pick low-hanging fruit.
 
 # Getting started
 
-```git clone git@github:mrmrs/trim.git && cd trim && npm install```
+    git clone git@github:mrmrs/trim.git; cd trim; npm install
 
 ### To run the development environment
-
-```gulp```
+    gulp
 
 ### To minify assets for production
 
-```gulp production```
+    gulp production
 
 ## TODO
 
