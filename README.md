@@ -16,3 +16,12 @@ to constantly pick low-hanging fruit.
 ### To minify assets for production
 
 ```gulp production```
+
+## TODO
+
+- Add image optimization
+- Concat and minify all css/js files
+- Csslint & JShint integration
+- Integrate autoprefixer
+- Integrate Livereload / server port
+

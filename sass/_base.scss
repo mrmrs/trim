@@ -7,5 +7,9 @@
  *                */
 
 
-a { transition: color .5s ease-in; }
+a {
+  background-color: red;
+  transition: background-color .5s ease-in;
+}
 
+* { color: gray; }

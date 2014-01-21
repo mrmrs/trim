@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
-    csslint = require('gulp-csslint'),
+    csslint = require('gulp-csslint');
 
 
 gulp.task('default', function(){
@@ -19,9 +19,11 @@ gulp.task('default', function(){
 
     // Lint your css!
     // Let the computer help you. It knows what to do :)
-   // gulp.src('./css/*.css')
-   //     .pipe(csslint())
-   //     .pipe(csslint.reporter());
+   gulp.src('./css/*.css')
+        .pipe(watch(function(files) {
+          return files.pipe(csslint())
+             .pipe(csslint.reporter());
+        }));
 });
 
 gulp.task('production', function(){
