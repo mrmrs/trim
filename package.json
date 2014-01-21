@@ -1,5 +1,5 @@
 {
-  "name": "stream",
+  "name": "trim",
   "version": "0.1.0",
   "devDependencies": {
     "gulp": "~3.4.0",
