@@ -10,29 +10,38 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     csslint = require('gulp-csslint');
 
+
+// Task to minify all css files in the css directory
 gulp.task('minify-css', function(){
-    gulp.src('css/*.css')
-      .pipe(minifyCSS({keepSpecialComments: 0}))
-      .pipe(gulp.dest('css/'));
-});
-
-gulp.task('minify-js', function() {
-    gulp.src('./js/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('./js/'));
-});
-
-gulp.task('lint', function(){
   gulp.src('./css/*.css')
-        .pipe(watch(function(files) {
-          return files.pipe(csslint({
+    .pipe(minifyCSS({keepSpecialComments: 0}))
+    .pipe(gulp.dest('css/'));
+});
+
+// Task to minify all js files in the js directory
+gulp.task('minify-js', function() {
+  gulp.src('./js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./js/'));
+});
+
+// Task to csslint css and jshint js
+gulp.task('lint', function(){
+  // Use jshint for js - currently not working it seems
+  gulp.src('./js/*.js')
+     .pipe(jshint())
+     .pipe(jshint.reporter('default'));
+
+  // Use csslint without box-sizing or compatible vendor prefixes
+  gulp.src('./css/*.css')
+    .pipe(csslint({
           'compatible-vendor-prefixes': false,
           'box-sizing': false
-          }))
-         .pipe(csslint.reporter());
-  }));
+        }))
+    .pipe(csslint.reporter());
 });
 
+// Task that compiles scss files down to css
 gulp.task('pre-process', function(){
   gulp.src('./sass/*.scss')
           .pipe(watch(function(files) {
@@ -42,12 +51,17 @@ gulp.task('pre-process', function(){
           }));
 });
 
+
+
+// DEFAULT TASK
+// Process sass and lints outputted css
 gulp.task('default', function(){
-  gulp.watch('sass/**/*.scss', function(event) {
+  gulp.watch(['./sass/**/*.scss', './js/**/*.js'], function(event) {
     gulp.run('pre-process');
     gulp.run('lint');
   });
 });
+
 
 gulp.task('production', function(){
     gulp.run('minify-css');
