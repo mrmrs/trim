@@ -1,7 +1,9 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     watch = require('gulp-watch'),
-    plumber = require('gulp-plumber'),
+    lr    = require('tiny-lr'),
+    server = lr();
+    livereload = require('gulp-livereload'),
     prefix = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
@@ -47,7 +49,8 @@ gulp.task('pre-process', function(){
           .pipe(watch(function(files) {
             return files.pipe(sass({includePaths: ['sass/']}))
               .pipe(prefix())
-              .pipe(gulp.dest('css/'));
+              .pipe(gulp.dest('css/'))
+              .pipe(livereload(server));
           }));
 });
 
@@ -56,9 +59,12 @@ gulp.task('pre-process', function(){
 // DEFAULT TASK
 // Process sass and lints outputted css
 gulp.task('default', function(){
-  gulp.watch(['./sass/**/*.scss', './js/**/*.js'], function(event) {
-    gulp.run('pre-process');
-    gulp.run('lint');
+  server.listen(35729, function (err) {
+    if (err) return console.log(err);
+    gulp.watch(['./sass/**/*.scss', './js/**/*.js'], function(event) {
+      gulp.run('pre-process');
+      gulp.run('lint');
+    });
   });
 });
 
