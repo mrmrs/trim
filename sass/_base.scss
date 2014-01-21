@@ -12,4 +12,8 @@ a {
   transition: background-color .5s ease-in;
 }
 
-* { color: gray; }
+p {
+  line-height: 1.618;
+}
+
+div { outline: 1px solid black; }

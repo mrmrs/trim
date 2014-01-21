@@ -91,6 +91,7 @@ dfn, em {
  */
 hr {
   -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -239,6 +240,8 @@ button[disabled], html input[disabled] {
  * 2. Remove excess padding in IE 8/9.
  */
 input[type="checkbox"], input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -300,7 +303,11 @@ table {
  *                */
 a {
   background-color: red;
+  -webkit-transition: background-color 0.5s ease-in;
   transition: background-color 0.5s ease-in; }
 
-* {
-  color: gray; }
+p {
+  line-height: 1.618; }
+
+div {
+  outline: 1px solid black; }
