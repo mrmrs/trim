@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     imagemin = require('gulp-imagemin'),
+    svgmin = require('gulp-svgmin'),
     jshint = require('gulp-jshint'),
     csslint = require('gulp-csslint');
 
@@ -33,12 +34,18 @@ gulp.task('minify-img', function() {
     .pipe(gulp.dest('./img'));
 });
 
+gulp.task('minify-svg', function(){
+  gulp.src('./img/svg')
+          .pipe(svgmin())
+          .pipe(gulp.dest('./img/svg'));
+});
+
 // Task to csslint css and jshint js
 gulp.task('jshint', function(){
   // Use jshint for js - currently not working it seems
   gulp.src('./js/*.js')
      .pipe(jshint())
-     .pipe(jshint.reporter('default'));
+     .pipe(jshint.reporter('jshint-stylish'));
 
   // Use csslint without box-sizing or compatible vendor prefixes
 });
@@ -76,6 +83,6 @@ gulp.task('default', function(){
 
 
 gulp.task('production', function(){
-    gulp.run('minify-css', 'minify-js', 'minify-img');
+    gulp.run('minify-css', 'minify-js', 'minify-img', 'minify-svg');
 });
 
