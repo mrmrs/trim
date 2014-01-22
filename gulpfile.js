@@ -56,7 +56,7 @@ gulp.task('pre-process', function(){
             return files.pipe(sass({includePaths: ['sass/']}))
               .pipe(prefix())
               .pipe(gulp.dest('css/'))
-              .pipe(livereload(server))
+              .pipe(livereload(server));
           }));
 });
 
