@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 gulp.task('minify-css', function(){
   gulp.src('./css/*.css')
     .pipe(minifyCSS({keepSpecialComments: 0}))
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('./css/'));
 });
 
 // Task to minify all js files in the js directory
@@ -34,28 +34,32 @@ gulp.task('minify-img', function() {
 });
 
 // Task to csslint css and jshint js
-gulp.task('lint', function(){
+gulp.task('jshint', function(){
   // Use jshint for js - currently not working it seems
   gulp.src('./js/*.js')
      .pipe(jshint())
      .pipe(jshint.reporter('default'));
 
   // Use csslint without box-sizing or compatible vendor prefixes
+});
+
+gulp.task('csslint', function(){
   gulp.src('./css/*.css')
     .pipe(csslint({
           'compatible-vendor-prefixes': false,
           'box-sizing': false
         }))
     .pipe(csslint.reporter());
+
 });
 
 // Task that compiles scss files down to css
 gulp.task('pre-process', function(){
   gulp.src('./sass/*.scss')
           .pipe(watch(function(files) {
-            return files.pipe(sass({includePaths: ['sass/']}))
+            return files.pipe(sass({includePaths: ['./sass/']}))
               .pipe(prefix())
-              .pipe(gulp.dest('css/'))
+              .pipe(gulp.dest('./css/'))
               .pipe(livereload(server));
           }));
 });
@@ -64,10 +68,8 @@ gulp.task('pre-process', function(){
 // Process sass and lints outputted css
 gulp.task('default', function(){
   server.listen(35729, function (err) {
-    if (err) return console.log(err);
-    gulp.watch(['./sass/**/*.scss', './js/**/*.js'], function(event) {
-      gulp.run('pre-process');
-      gulp.run('lint');
+    gulp.watch(['./sass/*.scss', './js/*.js'], function(event) {
+      gulp.run('pre-process', 'csslint', 'jshint');
     });
   });
 });
