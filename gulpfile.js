@@ -101,8 +101,9 @@ gulp.task('pre-process', function(){
 */
 
 gulp.task('default', function(){
+  gulp.run('pre-process', 'csslint', 'jshint');
   server.listen(35729, function (err) {
-    gulp.watch(['./sass/*.scss', './js/*.js'], function(event) {
+    gulp.watch(['*.html', './sass/*.scss', './js/*.js'], function(event) {
       gulp.run('pre-process', 'csslint', 'jshint');
     });
   });
