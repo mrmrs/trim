@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     imagemin = require('gulp-imagemin'),
     svgmin = require('gulp-svgmin'),
     jshint = require('gulp-jshint'),
@@ -74,18 +74,16 @@ gulp.task('csslint', function(){
 
 });
 
-
 // Task that compiles scss files down to good old css
 gulp.task('pre-process', function(){
-  gulp.src('./sass/*.scss')
+  gulp.src('./sass/i.scss')
       .pipe(watch(function(files) {
-        return files.pipe(sass({includePaths: ['./sass/']}))
+        return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
           .pipe(prefix())
           .pipe(gulp.dest('./css/'))
           .pipe(livereload(server));
       }));
 });
-
 
 /*
    DEFAULT TASK

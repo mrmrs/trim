@@ -15,6 +15,7 @@
     "gulp-sass": "~0.4.1",
     "jshint-stylish": "~0.1.5",
     "gulp-svgmin": "~0.4.1",
-    "gulp-autoprefixer": "0.0.5"
+    "gulp-autoprefixer": "0.0.5",
+    "gulp-ruby-sass": "~0.3.0"
   }
 }
