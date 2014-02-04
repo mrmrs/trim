@@ -1,6 +1,6 @@
 {
   "name": "trim",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "devDependencies": {
     "gulp": "~3.4.0",
     "gulp-livereload": "~0.2.0",
