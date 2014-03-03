@@ -96,7 +96,6 @@ gulp.task('pre-process', function(){
 
 */
 gulp.task('default', function(){
-  gulp.run('reload', 'pre-process', 'csslint', 'jshint');
   server.listen(35729, function (err) {
     gulp.watch(['*.html', '*/*.html', './sass/*.scss', './js/*.js'], function(event) {
       gulp.run('reload', 'pre-process', 'csslint', 'jshint');
