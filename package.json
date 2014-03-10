@@ -1,6 +1,11 @@
 {
   "name": "trim",
   "version": "0.0.1",
+  "description": "Performance oriented developement environment.",
+  "repository" : {
+    "type" : "git" ,
+    "url" : "http://github.com/mrmrs/trim.git"
+  },
   "devDependencies": {
     "gulp": "~3.4.0",
     "gulp-livereload": "~0.2.0",
@@ -17,5 +22,11 @@
     "gulp-svgmin": "~0.4.1",
     "gulp-autoprefixer": "0.0.5",
     "gulp-ruby-sass": "~0.3.0"
-  }
+  },
+  "author": {
+    "name" : "@mrmrs",
+    "email" : "hi@mrmrs.cc",
+    "url" : "http://mrmrs.cc"
+   },
+  "license": "MIT"
 }
