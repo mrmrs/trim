@@ -35,7 +35,7 @@ gulp.task('reload', function(){
 gulp.task('minify-js', function() {
   gulp.src('./js/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./js/'));
+    .pipe(gulp.dest('./js/min/'));
 });
 
 // Task to optmize and minify images
