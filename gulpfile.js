@@ -97,13 +97,13 @@ gulp.task('pre-process', function(){
 */
 gulp.task('default', function(){
   server.listen(35729, function (err) {
-    gulp.watch(['*.html', '*/*.html', './sass/*.scss', './js/*.js'], function(event) {
-      gulp.run('reload', 'pre-process', 'csslint', 'jshint');
+    gulp.watch(['*.html', '*/*.html', './sass/*.scss'], function(event) {
+      gulp.run('reload', 'pre-process', 'csslint');
     });
   });
 });
 
 gulp.task('production', function(){
-    gulp.run('minify-css', 'minify-js', 'minify-img', 'minify-svg');
+    gulp.run('minify-css', 'minify-img', 'minify-svg');
 });
 
