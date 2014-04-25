@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     svgmin = require('gulp-svgmin'),
     jshint = require('gulp-jshint'),
+    express = require('express'),
     csslint = require('gulp-csslint');
 
 
@@ -21,14 +22,6 @@ gulp.task('minify-css', function(){
   gulp.src('./css/*.css')
     .pipe(minifyCSS({keepSpecialComments: 0}))
     .pipe(gulp.dest('./css/'));
-});
-
-// Reload html
-gulp.task('reload', function(){
-  gulp.src('*.html')
-    .pipe(watch(function(files) {
-      return files.pipe(livereload(server));
-    }));
 });
 
 // Task to minify all js files in the js directory
@@ -81,9 +74,17 @@ gulp.task('pre-process', function(){
         return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
           .pipe(prefix())
           .pipe(gulp.dest('./css/'))
-          .pipe(livereload(server));
+          .pipe(livereload(3000));
       }));
 });
+
+// static server function
+//
+function startServer() {
+  var app = express();
+  app.use(express.static(__dirname));
+  app.listen(3000);
+}
 
 /*
    DEFAULT TASK
@@ -96,10 +97,9 @@ gulp.task('pre-process', function(){
 
 */
 gulp.task('default', function(){
-  server.listen(35729, function (err) {
-    gulp.watch(['*.html', '*/*.html', './sass/*.scss'], function(event) {
-      gulp.run('reload', 'pre-process', 'csslint');
-    });
+  startServer();
+  gulp.watch(['*.html', './sass/*.scss'], function(event) {
+    gulp.run('pre-process', 'csslint');
   });
 });
 
