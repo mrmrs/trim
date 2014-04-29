@@ -47,5 +47,8 @@
     { "name": "@mrmrs", "email": "hi@mrmrs.cc" },
     { "name": " @jshawl", "email": "jesse@jshawl.com" }
   ],
+  "engines": {
+    "node": ">=0.10.22"
+  },
   "license": "MIT"
 }
