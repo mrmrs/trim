@@ -1,10 +1,15 @@
 {
   "name": "trim",
   "version": "0.0.2",
+  "homepage": "http://mrmrs.github.io/trim",
   "description": "Performance oriented developement environment.",
+  "keywords": "Gulp, performance, css, js, front-end, html5, template, scaffolding, boilerplate",
   "repository": {
     "type": "git",
     "url": "http://github.com/mrmrs/trim.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrmrs/trim/issues"
   },
   "devDependencies": {
     "gulp": "~3.5.6",
@@ -28,5 +33,6 @@
     "email": "hi@mrmrs.cc",
     "url": "http://mrmrs.cc"
   },
+  "contributors": "@mrmrs, @jshawl",
   "license": "MIT"
 }
