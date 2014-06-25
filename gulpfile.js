@@ -1,58 +1,23 @@
-// Load plugins
+// Gulp tasks for TRIM
 
+// Load plugins 
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     watch = require('gulp-watch'),
-    lr    = require('tiny-lr'),
-    server = lr(),
-    livereload = require('gulp-livereload'),
     prefix = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
-    uglify = require('gulp-uglify'),
     sass = require('gulp-ruby-sass'),
-    imagemin = require('gulp-imagemin'),
-    svgmin = require('gulp-svgmin'),
-    jshint = require('gulp-jshint'),
-    express = require('express'),
-    csslint = require('gulp-csslint');
+    csslint = require('gulp-csslint'),
+    browserSync = require('browser-sync'),
+    browserReload = browserSync.reload;
 
-
-// Task to minify all css files in the css directory
+// Minify all css files in the css directory
+// Run this in the root directory of the project with `gulp minify-css `
 gulp.task('minify-css', function(){
   gulp.src('./css/*.css')
     .pipe(minifyCSS({keepSpecialComments: 0}))
-    .pipe(gulp.dest('./css/'));
+    .pipe(gulp.dest('./css/i.min.css'));
 });
-
-// Task to minify all js files in the js directory
-gulp.task('minify-js', function() {
-  gulp.src('./js/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./js/min/'));
-});
-
-// Task to optmize and minify images
-gulp.task('minify-img', function() {
-  return gulp.src('./img/**/*')
-    .pipe((imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('./img'));
-});
-
-// Task to optimize and minify svg
-gulp.task('minify-svg', function(){
-  gulp.src('./img/svg')
-          .pipe(svgmin())
-          .pipe(gulp.dest('./img/svg'));
-});
-
-// Task to run jshint and pipe output to terminal
-gulp.task('jshint', function(){
-  gulp.src('./js/*.js')
-     .pipe(jshint())
-     .pipe(jshint.reporter('jshint-stylish'));
-
-});
-
 
 // Use csslint without box-sizing or compatible vendor prefixes (these
 // don't seem to be kept up to date on what to yell about)
@@ -61,49 +26,50 @@ gulp.task('csslint', function(){
     .pipe(csslint({
           'compatible-vendor-prefixes': false,
           'box-sizing': false,
-          'important': false
+          'important': false,
+          'known-properties': false
         }))
     .pipe(csslint.reporter());
-
 });
 
 // Task that compiles scss files down to good old css
 gulp.task('pre-process', function(){
-  gulp.src('./sass/app.scss')
+  gulp.src('./sass/i.scss')
       .pipe(watch(function(files) {
         return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
           .pipe(prefix())
-          .pipe(gulp.dest('./css/'))
-          .pipe(livereload(3000));
+          .pipe(gulp.dest('css'))
+          .pipe(browserSync.reload({stream:true}));
       }));
 });
 
-// static server function
-//
-function startServer() {
-  var app = express();
-  app.use(express.static(__dirname));
-  app.listen(3000);
-}
+// Initialize browser-sync which starts a static server also allows for 
+// browsers to reload on filesave
+gulp.task('browser-sync', function() {
+    browserSync.init(null, {
+        server: {
+            baseDir: "./"
+        }
+    });
+});
+
+// Function to call for reloading browsers
+gulp.task('bs-reload', function () {
+    browserSync.reload();
+});
 
 /*
    DEFAULT TASK
 
- • Process sass and lints outputted css
- • Outputted css is run through autoprefixer
- • Runs jshint on all js files in ./js/
- • Sends updates to any files in directory to browser for
-   automatic reloading
+ • Process sass then auto-prefixes and lints outputted css
+ • Starts a server on port 3000
+ • Reloads browsers when you change html or sass files
 
 */
-gulp.task('default', function(){
-  startServer();
-  gulp.watch(['*.html', './sass/*.scss'], function(event) {
-    gulp.run('pre-process', 'csslint');
-  });
-});
-
-gulp.task('production', function(){
-    gulp.run('minify-css', 'minify-img', 'minify-svg');
+gulp.task('default', ['pre-process', 'bs-reload', 'browser-sync'], function(){
+  gulp.start('pre-process', 'csslint');
+  gulp.watch('sass/*.scss', ['pre-process']);
+  gulp.watch('css/*', ['bs-reload']);
+  gulp.watch('*.html', ['bs-reload']);
 });
 
