@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 gulp.task('minify-css', function(){
   gulp.src('./css/*.css')
     .pipe(minifyCSS({keepSpecialComments: 0}))
-    .pipe(gulp.dest('./css/i.min.css'));
+    .pipe(gulp.dest('./css/app.min.css'));
 });
 
 // Use csslint without box-sizing or compatible vendor prefixes (these
@@ -34,7 +34,7 @@ gulp.task('csslint', function(){
 
 // Task that compiles scss files down to good old css
 gulp.task('pre-process', function(){
-  gulp.src('./sass/i.scss')
+  gulp.src('./sass/app.scss')
       .pipe(watch(function(files) {
         return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
           .pipe(prefix())
