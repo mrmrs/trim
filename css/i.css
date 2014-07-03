@@ -1,0 +1,573 @@
+/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+/**
+ * Set consistent quote types.
+ */
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+/*
+
+   QUERIES
+
+*/
+
+/*
+ * Mixing for mobile first queries.
+ * Two breakpoints.
+ * Use like @include break(medium) {
+ *  ***Styles***
+ * }
+ *
+ */
+
+/*
+
+   COLORS
+
+*/
+
+/* variables */
+
+/* 
+  Box Sizing 
+*/
+
+/*
+
+   BACKGROUND SIZE
+
+*/
+
+/*
+
+   BORDER COLORS
+
+ */
+
+/*
+
+   BORDER RADIUS
+
+*/
+
+/*
+
+   BORDER STYLES
+
+ */
+
+/*
+   BORDER WIDTHS
+
+   LEGEND
+
+   b = border
+   w = width
+
+   0-5 = step in sizing scale
+
+*/
+
+/*
+
+   BORDER BASE
+
+   Legend
+
+   a = all
+   t = top
+   r = right
+   b = bottom
+   l = left
+
+*/
+
+/*
+
+   CLEARS
+
+*/
+
+/* Nicolas Gallaghers Clearfix solution
+   Ref: http://nicolasgallagher.com/micro-clearfix-hack/ */
+
+/*
+
+   DIMENSION UTILITIES
+
+*/
+
+/*
+
+   DISPLAY
+
+   - Mobile First
+   - Breakpoint: not-small
+   - Breakpoint: medium
+   - Breakpoint: large
+
+*/
+
+/*
+
+   FLOATS
+
+   1. Floated elements are automatically rendered as block level elements.
+      Setting floats to display inline will fix the double margin bug in
+      ie6. You know... just in case.
+
+   Legend
+
+   f = float
+   l = left
+   r = right
+   n = none
+
+*/
+
+/*
+
+   Font Family Groups
+
+*/
+
+body {
+  font-family: avenir, 'avenir next', helvetica, 'helvetica neue', arial, sans-serif;
+}
+
+/*
+
+   Font Style
+
+*/
+
+/*
+
+   FONT WEIGHT
+
+*/
+
+/* Forms */
+
+/*
+
+   IMAGES
+
+*/
+
+/* Responsive images! */
+
+/*
+
+   LETTER SPACING
+
+*/
+
+/*
+
+   LINE HEIGHT
+
+*/
+
+/*
+
+   LINKS
+
+*/
+
+/*
+
+   LISTS
+
+*/
+
+/*
+
+   MAX WIDTHS
+
+*/
+
+/*
+
+    OVERFLOWS
+
+ */
+
+/*
+
+    POSITIONING
+
+ */
+
+/* Values */
+
+/* Top Percentage based scale */
+
+/*
+
+   SKINS
+
+*/
+
+/* Grays */
+
+/* Text colors */
+
+/* Background colors */
+
+/*
+   SPACING
+
+   An eight step powers of two scale ranging from 0 to 16rem.
+
+   Legend:
+
+   p = padding
+   m = margin
+
+   a = all
+   h = horizontal
+   v = vertical
+   t = top
+   r = right
+   b = bottom
+   l = left
+
+   n = none
+   xs = extra small
+   s = small
+   m = medium
+   l = large
+   x = extra
+   xl = extra large
+   xxl = extra extra large
+
+*/
+
+/*
+
+   TEXT DECORATION
+
+*/
+
+/*
+
+  Text Align
+
+*/
+
+/*
+
+   TEXT TRANSFORM
+
+*/
+
+/* ==========================================================================
+   TYPE SCALE
+   ========================================================================== */
+
+/*
+
+   UTILITIES
+
+*/
+
+/*
+ *  The Media Object
+ *  Built by @stubornella
+ *  http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ *
+ *  <div class="media attribution">
+ *
+ *    <a href="http://twitter.com/stubbornella" class="img">
+ *      <img src="http://stubbornella.com/profile_image.jpg" alt="me" />
+ *    </a>
+ *
+ *    <div class="bd">
+ *      @Stubbornella 14 minutes ago
+ *    </div>
+ *
+ *   </div>
+ */
+
+/*
+ * The Flag Object
+ * Built by @csswizzrdry
+ * http://csswizardry.com/2013/05/the-flag-object/
+ *
+ *
+ * Use to vertically center text against an image.
+ *
+ *  <div class="flag">
+ *      <div class="flag--image">
+ *          <img src="" alt="">
+ *      </div>
+ *      <div class="flag--body">
+ *          <p></p>
+ *      </div>
+ *  </div>
+ *
+ */
+
+/*
+  Aspect ratios for media objects i.e canvas, iframe, video, svg etc.
+  Defaults to 16x9
+*/
+
+/*
+
+   VISIBILITY
+
+*/
+
+/*
+    Text that is hidden but accessible
+    Ref: http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+*/
+
+/*
+
+   WHITE SPACE
+
+*/
+
+/*
+
+   WIDTHS
+
+*/
+
+/* Width Scale */
+
+/* Width String Properties */
+
+/*
+
+   WORD SPACING
+
+*/
+
+/* For eliminating space between inline-block elements */
+
+/*
+ * Built on TRIM
+ *
+ * Author: mrmrs
+ * License: MIT
+ *
+ *                */
+
+/*
+   VERTICAL ALIGN
+*/

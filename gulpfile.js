@@ -5,8 +5,10 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     watch = require('gulp-watch'),
     prefix = require('gulp-autoprefixer'),
+    uncss = require('gulp-uncss'),
     minifyCSS = require('gulp-minify-css'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
+    size = require('gulp-size'),
     rename = require('gulp-rename'),
     csslint = require('gulp-csslint'),
     jshint = require('gulp-jshint'),
@@ -19,6 +21,7 @@ var gulp = require('gulp'),
 gulp.task('minify-css', function(){
   gulp.src('./css/i.css')
     .pipe(minifyCSS())
+    .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('i.min.css'))
     .pipe(gulp.dest('./css/'));
 });
@@ -48,8 +51,13 @@ gulp.task('csslint', function(){
 gulp.task('pre-process', function(){
   gulp.src('./sass/i.scss')
       .pipe(watch(function(files) {
-        return files.pipe(sass({loadPath: ['./sass/'], style: "compact"}))
+        return files.pipe(sass())
           .pipe(prefix())
+          .pipe(size({gzip: true, showFiles: true, title:'pre uncss'}))
+          .pipe(uncss({
+            html: ['index.html']
+          }))
+          .pipe(size({gzip: true, showFiles: true, title:'after uncss'}))
           .pipe(gulp.dest('css'))
           .pipe(browserSync.reload({stream:true}));
       }));
@@ -78,9 +86,9 @@ gulp.task('bs-reload', function () {
  • Reloads browsers when you change html or sass files
 
 */
-gulp.task('default', ['pre-process', 'bs-reload', 'browser-sync'], function(){
+gulp.task('default', ['pre-process', 'minify-css', 'bs-reload', 'browser-sync'], function(){
   gulp.start('pre-process', 'csslint');
-  gulp.watch('sass/*.scss', ['pre-process']);
+  gulp.watch('sass/*.scss', ['pre-process', 'minify-css']);
   gulp.watch('css/i.css', ['bs-reload']);
   gulp.watch('*.html', ['bs-reload']);
 });
