@@ -8,6 +8,12 @@
  * Correct `block` display not defined in IE 8/9.
  */
 
+footer,
+header,
+main {
+  display: block;
+}
+
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */
@@ -73,6 +79,10 @@ body {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
+
+h1 {
+  margin: 0.67em 0;
+}
 
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
@@ -242,6 +252,14 @@ input::-moz-focus-inner {
 /* 
   Box Sizing 
 */
+
+main,
+footer,
+header {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 /*
 
@@ -422,9 +440,17 @@ body {
 
 /* Grays */
 
+.white {
+  color: #fff !important;
+}
+
 /* Text colors */
 
 /* Background colors */
+
+.bg-black {
+  background-color: #111;
+}
 
 /*
    SPACING
@@ -561,12 +587,12 @@ body {
 /* For eliminating space between inline-block elements */
 
 /*
- * Built on TRIM
- *
- * Author: mrmrs
- * License: MIT
- *
- *                */
+
+  STYLES
+
+  Add custom styles here.
+
+*/
 
 /*
    VERTICAL ALIGN

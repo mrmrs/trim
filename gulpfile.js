@@ -11,6 +11,8 @@ var gulp = require('gulp'),
     size = require('gulp-size'),
     rename = require('gulp-rename'),
     csslint = require('gulp-csslint'),
+    imagemin = require('gulp-imagemin'),
+    pngcrush = require('imagemin-pngcrush'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     browserSync = require('browser-sync'),
@@ -24,6 +26,16 @@ gulp.task('minify-css', function(){
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('i.min.css'))
     .pipe(gulp.dest('./css/'));
+});
+
+gulp.task('minify-images', function(){
+  gulp.src('./img/*')
+     .pipe(imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngcrush()]
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 // JS Hint that code

@@ -28,6 +28,7 @@
     "gulp": "^3.8.2",
     "gulp-autoprefixer": "0.0.7",
     "gulp-csslint": "^0.1.4",
+    "gulp-imagemin": "^0.6.1",
     "gulp-jshint": "^1.6.4",
     "gulp-minify-css": "^0.3.5",
     "gulp-rename": "^1.2.0",
@@ -37,6 +38,7 @@
     "gulp-uncss": "^0.4.4",
     "gulp-util": "^2.2.18",
     "gulp-watch": "^0.6.8",
+    "imagemin-pngcrush": "^0.1.0",
     "jshint-stylish": "^0.2.0"
   },
   "author": {
