@@ -18,16 +18,28 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     browserReload = browserSync.reload;
 
-// Minify all css files in the css directory
-// Run this in the root directory of the project with `gulp minify-css `
+
+/* MINIFY CSS
+   Run this in the root directory of the project with 
+   gulp minify-css
+   Will output minified filesize both with and without gzip
+*/
+
 gulp.task('minify-css', function(){
-  gulp.src('./css/i.css')
+  gulp.src('./css/i.css') // set this to the file(s) you want to minify. 
     .pipe(minifyCSS())
     .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('i.min.css'))
     .pipe(gulp.dest('./css/'));
 });
+
+
+/* 
+   IMAGE MINIFICATION 
+   This will minify all images in the img directory. Run with 
+   gulp minify-images 
+*/
 
 gulp.task('minify-images', function(){
   gulp.src('./img/*')
