@@ -4,29 +4,25 @@
 
 */
 
-  .brn {        border-radius: 0; }
-  .br {         border-radius: .125rem; }
-  .br2 {        border-radius: .25rem; }
-  .br-circ {    border-radius: 9999px; }
+  .rounded {         border-radius: .125rem; }
+  .rounded-2 {        border-radius: .25rem; }
+  .circle {    border-radius: 9999px; }
 
 @include break(not-small) {
-  .brn-ns {     border-radius: 0; }
-  .br-ns {      border-radius: .125rem; }
-  .br2-ns {     border-radius: .25rem; }
-  .br-circ-ns { border-radius: 9999px; }
+  .rounded-ns {      border-radius: .125rem; }
+  .rounded-2-ns {     border-radius: .25rem; }
+  .circle-ns { border-radius: 9999px; }
 }
 
 @include break(medium) {
-  .brn-m {     border-radius: 0; }
-  .br-m {      border-radius: .125rem; }
-  .br2-m {     border-radius: .25rem; }
-  .br-circ-m { border-radius: 9999px; }
+  .rounded-m {      border-radius: .125rem; }
+  .rounded-2-m {     border-radius: .25rem; }
+  .circle-m { border-radius: 9999px; }
 }
 
 @include break(large) {
-  .brn-l {     border-radius: 0; }
-  .br-l {      border-radius: .125rem; }
-  .br2-l {     border-radius: .25rem; }
-  .br-circ-l { border-radius: 9999px; }
+  .rounded-l {      border-radius: .125rem; }
+  .rounded-2-l {     border-radius: .25rem; }
+  .circle-l { border-radius: 9999px; }
 }
 
