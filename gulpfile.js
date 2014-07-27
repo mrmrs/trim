@@ -66,7 +66,7 @@ gulp.task('js-hint', function(){
 // Use csslint without box-sizing or compatible vendor prefixes (these
 // don't seem to be kept up to date on what to yell about)
 gulp.task('csslint', function(){
-  gulp.src('./css/i.css')
+  gulp.src('./css/trim.css')
     .pipe(csslint({
           'compatible-vendor-prefixes': false,
           'box-sizing': false,
