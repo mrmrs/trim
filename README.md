@@ -16,40 +16,30 @@ Set up the project by cloning the repo, navigating into it, then installing the 
 
     git clone git@github:mrmrs/trim.git
     cd trim
-    npm install
+    npm install -g gulp browser-syng
+    npm install .
 
 ### To run the development environment
 
 Once you've run npm install just run this very complicated command in your terminal to start gulp
 
-    gulp
+```npm start```
 
 This will watch the sass directory and do the following on file change:
-  • Compile scss files down to css/app.css
-  • Run autoprefixer on css/app.css (this allows you to keep vendor prefixes out of your css)
+  • Compile scss files down to css/trim.css
+  • Run autoprefixer on css/trim.css (this allows you to keep vendor prefixes out of your css)
   • Run csslint and spit the output to your terminal window where you are running gulp
   • Run an instance of livereload. With the chrome and safari extensions, you can see
     changes in the browser without hitting refresh
 
 
-### To minify assets for production
-
-    gulp production
-
-This will
-  • Compile scss files down to css/app.css
-  • Run autoprefixer on css/app.css (this allows you to keep vendor prefixes out of your css)
-  • Minify all js and css files in the ./css and ./js directories
-  • Compress / minify all images in the ./img directory
-  • Compress / minify all svg elements in the ./img/svg/ directory
-
 If you are including js - you'll still need to change the references in your html to
 the minified files.
 
+## Sass 
+Trim comes with a number of simple css utilities that you might find helpful. MOre documentation later.
+
 ## TODO
 
-- Concat and minify all css/js files
-- Show how to dictate order of js/css when cat'n all the files
-- Add debugging utilities in sass
-
+- Show how to dictate order of js when compiling
 
