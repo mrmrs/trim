@@ -23,6 +23,7 @@ var gulp = require('gulp'),
 gulp.task('minify-css', function(){
   gulp.src('./css/i.css')
     .pipe(minifyCSS())
+    .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('i.min.css'))
     .pipe(gulp.dest('./css/'));
@@ -30,12 +31,16 @@ gulp.task('minify-css', function(){
 
 gulp.task('minify-images', function(){
   gulp.src('./img/*')
+     .pipe(size({gzip: false, showFiles: true, title:'original image size'}))
+     .pipe(size({gzip: true, showFiles: true, title:'original image size'}))
      .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
         use: [pngcrush()]
-        }))
-        .pipe(gulp.dest('dist'));
+      }))
+      .pipe(size({gzip: false, showFiles: true, title:'minified images'}))
+      .pipe(size({gzip: true, showFiles: true, title:'minified images'}))
+      .pipe(gulp.dest('dist'));
 });
 
 // JS Hint that code
@@ -65,10 +70,9 @@ gulp.task('pre-process', function(){
       .pipe(watch(function(files) {
         return files.pipe(sass())
           .pipe(prefix())
+          .pipe(size({gzip: false, showFiles: true, title:'pre uncss'}))
           .pipe(size({gzip: true, showFiles: true, title:'pre uncss'}))
-          .pipe(uncss({
-            html: ['index.html']
-          }))
+          .pipe(size({gzip: false, showFiles: true, title:'after uncss'}))
           .pipe(size({gzip: true, showFiles: true, title:'after uncss'}))
           .pipe(gulp.dest('css'))
           .pipe(browserSync.reload({stream:true}));
