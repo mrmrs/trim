@@ -26,11 +26,11 @@ var gulp = require('gulp'),
 */
 
 gulp.task('minify-css', function(){
-  gulp.src('./css/i.css') // set this to the file(s) you want to minify. 
+  gulp.src('./css/trim.css') // set this to the file(s) you want to minify. 
     .pipe(minifyCSS())
     .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
-    .pipe(rename('i.min.css'))
+    .pipe(rename('trim.min.css'))
     .pipe(gulp.dest('./css/'));
 });
 
@@ -52,7 +52,7 @@ gulp.task('minify-images', function(){
       }))
       .pipe(size({gzip: false, showFiles: true, title:'minified images'}))
       .pipe(size({gzip: true, showFiles: true, title:'minified images'}))
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest('./img')); // change the dest if you don't want your images overwritten
 });
 
 // JS Hint that code
@@ -78,14 +78,14 @@ gulp.task('csslint', function(){
 
 // Task that compiles scss files down to good old css
 gulp.task('pre-process', function(){
-  gulp.src('./sass/i.scss')
+  gulp.src('./sass/trim.scss')
       .pipe(watch(function(files) {
         return files.pipe(sass())
+          .pipe(size({gzip: false, showFiles: true, title:'without vendor prefixes'}))
+          .pipe(size({gzip: true, showFiles: true, title:'without vendor prefixes'}))
           .pipe(prefix())
-          .pipe(size({gzip: false, showFiles: true, title:'pre uncss'}))
-          .pipe(size({gzip: true, showFiles: true, title:'pre uncss'}))
-          .pipe(size({gzip: false, showFiles: true, title:'after uncss'}))
-          .pipe(size({gzip: true, showFiles: true, title:'after uncss'}))
+          .pipe(size({gzip: false, showFiles: true, title:'after vendor prefixes'}))
+          .pipe(size({gzip: true, showFiles: true, title:'after vendor prefixes'}))
           .pipe(gulp.dest('css'))
           .pipe(browserSync.reload({stream:true}));
       }));
@@ -117,7 +117,7 @@ gulp.task('bs-reload', function () {
 gulp.task('default', ['pre-process', 'minify-css', 'bs-reload', 'browser-sync'], function(){
   gulp.start('pre-process', 'csslint');
   gulp.watch('sass/*.scss', ['pre-process', 'minify-css']);
-  gulp.watch('css/i.css', ['bs-reload']);
+  gulp.watch('css/trim.css', ['bs-reload', 'minify-css']);
   gulp.watch('*.html', ['bs-reload']);
 });
 

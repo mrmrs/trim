@@ -1,3 +1,8 @@
+/* TRIM */
+
+// Set this to true to enable a border around every element
+$layout-debug: false;
+
 @import "normalize";
 @import "queries";
 @import "colors";
@@ -37,8 +42,7 @@
 @import "visibility";
 @import "white_space";
 @import "widths";
-@import "word_spacing";
-@import "styles";
 @import "vertical_align";
+@import "styles";
 
 @import "debug";

@@ -1,4 +1,5 @@
-$layout-debug: false;
+// Set this to true in trim.scss to debug layout
+// $layout-debug: false;
 
 @if $layout-debug == true {
 
