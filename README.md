@@ -16,7 +16,7 @@ Set up the project by cloning the repo, navigating into it, then installing the 
 
     git clone git@github:mrmrs/trim.git
     cd trim
-    npm install -g gulp browser-syng
+    npm install -g gulp browser-sync
     npm install .
 
 ### To run the development environment
