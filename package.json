@@ -39,6 +39,7 @@
     "gulp-util": "^2.2.18",
     "gulp-watch": "^0.6.8",
     "imagemin-pngcrush": "^0.1.0",
+    "inline-styles": "^1.0.0",
     "jshint-stylish": "^0.2.0"
   },
   "author": {
@@ -61,6 +62,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "post": "postcss"
   }
 }
