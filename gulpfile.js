@@ -1,6 +1,6 @@
 // Gulp tasks for TRIM
 
-// Load plugins 
+// Load plugins
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     watch = require('gulp-watch'),
@@ -20,29 +20,31 @@ var gulp = require('gulp'),
 
 
 /* MINIFY CSS
-   Run this in the root directory of the project with 
+   Run this in the root directory of the project with
    gulp minify-css
    Will output minified filesize both with and without gzip
 */
 
 gulp.task('minify-css', function(){
-  gulp.src('./css/trim.css') // set this to the file(s) you want to minify. 
+  gulp.src('./css/trim.css') // set this to the file(s) you want to minify.
+    .pipe(size({gzip: false, showFiles: true, title:'unminified css'}))
+    .pipe(size({gzip: true, showFiles: true, title:'unminified css'}))
     .pipe(minifyCSS())
     .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('trim.min.css'))
-    .pipe(gulp.dest('./css/'));
+    .pipe(gulp.dest('./css/'))
+    .pipe(browserSync.reload({stream:true}));
 });
 
-
-/* 
-   IMAGE MINIFICATION 
-   This will minify all images in the img directory. Run with 
-   gulp minify-images 
+/*
+   IMAGE MINIFICATION
+   This will minify all images in the img directory. Run with
+   gulp minify-images
 */
 
 gulp.task('minify-images', function(){
-  gulp.src('./img/*')
+  gulp.src('./img-src/*')
      .pipe(size({gzip: false, showFiles: true, title:'original image size'}))
      .pipe(size({gzip: true, showFiles: true, title:'original image size'}))
      .pipe(imagemin({
@@ -50,17 +52,9 @@ gulp.task('minify-images', function(){
         svgoPlugins: [{removeViewBox: false}],
         use: [pngcrush()]
       }))
-      .pipe(size({gzip: false, showFiles: true, title:'minified images'}))
-      .pipe(size({gzip: true, showFiles: true, title:'minified images'}))
+      .pipe(size({gzip: false, showFiles: true, title:'minified image size'}))
+      .pipe(size({gzip: true, showFiles: true, title:'minified image size'}))
       .pipe(gulp.dest('./img')); // change the dest if you don't want your images overwritten
-});
-
-// JS Hint that code
-// Run this in the root directory of the project with `gulp js-hint`
-gulp.task('js-hint', function(){
-  gulp.src('./js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('stylish'));
 });
 
 // Use csslint without box-sizing or compatible vendor prefixes (these
@@ -91,7 +85,7 @@ gulp.task('pre-process', function(){
       }));
 });
 
-// Initialize browser-sync which starts a static server also allows for 
+// Initialize browser-sync which starts a static server also allows for
 // browsers to reload on filesave
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
@@ -117,7 +111,7 @@ gulp.task('bs-reload', function () {
 gulp.task('default', ['pre-process', 'minify-css', 'bs-reload', 'browser-sync'], function(){
   gulp.start('pre-process', 'csslint');
   gulp.watch('sass/*.scss', ['pre-process', 'minify-css']);
-  gulp.watch('css/trim.css', ['bs-reload', 'minify-css']);
+  gulp.watch(['css/trim.css', 'index.html'], ['bs-reload']);
   gulp.watch('*.html', ['bs-reload']);
 });
 
