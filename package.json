@@ -1,13 +1,12 @@
 {
-  "name": "aerodynamic",
-  "version": "0.0.4",
-  "homepage": "http://mrmrs.github.io/trim",
-  "description": "Performance oriented developement environment.",
+  "name": "trimmed",
+  "version": "1.0.0",
+  "homepage": "http://github.com/mrmrs/trim",
+  "description": "Front-end performance oriented development environment.",
   "keywords": [
     "Gulp",
     "performance",
     "css",
-    "js",
     "front-end",
     "html5",
     "template",
