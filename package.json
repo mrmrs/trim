@@ -63,6 +63,6 @@
   "license": "MIT",
   "scripts": {
     "start": "gulp",
-    "post": "postcss"
+    "uncss": "gulp uncss"
   }
 }
