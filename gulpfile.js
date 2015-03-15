@@ -28,11 +28,11 @@ var gulp = require('gulp'),
 gulp.task('minify-css', function(){
   gulp.src('./css/trim.css') // set this to the file(s) you want to minify.
     .pipe(size({gzip: false, showFiles: true, title:'unminified css'}))
-    .pipe(size({gzip: true, showFiles: true, title:'unminified css'}))
+    .pipe(size({gzip: true, showFiles: true, title:'gzipped'}))
     .pipe(minifyCSS())
-    .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
-    .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('trim.min.css'))
+    .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
+    .pipe(size({gzip: true, showFiles: true, title:'gzipped'}))
     .pipe(gulp.dest('./css/'))
     .pipe(browserSync.reload({stream:true}));
 });
@@ -85,6 +85,17 @@ gulp.task('pre-process', function(){
       }));
 });
 
+gulp.task('uncss', function() {
+  return gulp.src('css/trim.css')
+      .pipe(uncss({
+          ignore: ['a:link','a:hover','a:visited','a:active', 'a:focus','.carbonad', '.carbon-wrap', '.carbon-poweredby', '.carbon-text', '.carbon-img', '.carbon-ad a:visited', '.carbonad a:link'],
+          html: ['index.html']
+      }))
+      .pipe(minifyCSS())
+      .pipe(rename('trim.production.css'))
+      .pipe(gulp.dest('./css'));
+});
+
 // Initialize browser-sync which starts a static server also allows for
 // browsers to reload on filesave
 gulp.task('browser-sync', function() {
@@ -112,6 +123,6 @@ gulp.task('default', ['pre-process', 'minify-css', 'bs-reload', 'browser-sync'],
   gulp.start('pre-process', 'csslint');
   gulp.watch('sass/*.scss', ['pre-process', 'minify-css']);
   gulp.watch(['css/trim.css', 'index.html'], ['bs-reload']);
-  gulp.watch('*.html', ['bs-reload']);
+  gulp.watch('*.html', ['bs-reload', 'uncss']);
 });
 
