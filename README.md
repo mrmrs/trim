@@ -29,7 +29,7 @@ This will watch the sass directory and do the following on file change:
   • Compile scss files down to css/trim.css
   • Run autoprefixer on css/trim.css (this allows you to keep vendor prefixes out of your css)
   • Run csslint and spit the output to your terminal window where you are running gulp
-  • Run an instance of livereload. With the chrome and safari extensions, you can see
+  • Run an instance of browser-sync. With the chrome and safari extensions, you can see
     changes in the browser without hitting refresh
 
 
@@ -37,7 +37,7 @@ If you are including js - you'll still need to change the references in your htm
 the minified files.
 
 ## Sass 
-Trim comes with a number of simple css utilities that you might find helpful. MOre documentation later.
+Trim comes with a number of simple css utilities that you might find helpful. More documentation later.
 
 ## TODO
 
